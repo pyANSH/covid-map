@@ -11,7 +11,7 @@ function Layout({ children }: { children: JSX.Element }) {
       <div className="grid gap-4" style={{ gridTemplateColumns: `10% 85%` }}>
         <SideBar />
         <div className="h-full w-full">
-          <div className="h-full w-full">{children}</div>
+          <div className="h-full w-full overflow-y-auto">{children}</div>
         </div>
       </div>
     </div>
