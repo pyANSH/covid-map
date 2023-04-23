@@ -8,6 +8,7 @@ function AddContactPopup() {
   const { currentContact, isOpen, count, isEdit } = useSelector(
     (state: any) => state.contact
   );
+
   return (
     <div
       className={`fixed z-10 inset-0 overflow-y-auto x ${
@@ -207,10 +208,16 @@ function AddContactPopup() {
                       type: "contact/editContact",
                       payload: currentContact,
                     });
+                    enqueueSnackbar("Edit Successfully", {
+                      variant: "success",
+                    });
                   } else {
                     dispatch({
                       type: "contact/addContact",
                       payload: currentContact,
+                    });
+                    enqueueSnackbar("Add Successfully", {
+                      variant: "success",
                     });
                   }
                   dispatch({
@@ -257,6 +264,9 @@ function AddContactPopup() {
                     email: "",
                     phoneNumber: "",
                   },
+                });
+                enqueueSnackbar("Tap on list to see all details", {
+                  variant: "success",
                 });
               }}
             >

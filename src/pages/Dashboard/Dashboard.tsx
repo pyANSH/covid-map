@@ -80,7 +80,6 @@ function Dashboard() {
       },
     ],
   };
-  console.warn(dataAll);
   return (
     <>
       <div className="flex justify-center gap-4 items-center flex-wrap">

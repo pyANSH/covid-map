@@ -4,30 +4,28 @@ import { BsMap } from "react-icons/bs";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
+import { useSnackbar } from "notistack";
 function SideBar() {
   const { isHamOpen } = useSelector((state: any) => state.contact);
   const dispatch = useDispatch();
-  console.log(window.location.pathname);
   const navigate = useNavigate();
-
+  const { enqueueSnackbar } = useSnackbar();
   return (
     <div
-      className={`flex flex-col text-xl h-full w-52 justify-start gap-4 absolute left-0 z ${
-        isHamOpen ? "sidebar" : ""
+      className={`flex flex-col text-xl h-full  justify-start gap-4 absolute left-0 z  ${
+        isHamOpen ? "sidebar w-52" : ""
       } `}
-      style={{ top: "-24px", height: "calc(100% + 24px)" }}
     >
-      <GiHamburgerMenu
-        onClick={() => {
-          dispatch({ type: "contact/toggleIsHamOpen", payload: !isHamOpen });
-        }}
-      />
       {isHamOpen ? (
         <>
           <p
             className={`h-10 flex items-center justify-start gap-2 cursor-pointer hover:text-[#3b4bd5] }`}
             onClick={() => {
               navigate("/contact");
+              enqueueSnackbar("Use '+' button to Add Contact", {
+                variant: "info",
+              });
+              dispatch({ type: "contact/toggleIsHamOpen", payload: false });
             }}
             style={{
               color:
@@ -45,6 +43,7 @@ function SideBar() {
             }}
             onClick={() => {
               navigate("/dashboard");
+              dispatch({ type: "contact/toggleIsHamOpen", payload: false });
             }}
           >
             <MdOutlineSpaceDashboard /> Dashboard
@@ -55,6 +54,13 @@ function SideBar() {
             }`}
             onClick={() => {
               navigate("/map");
+              enqueueSnackbar("Click On marker to see current cases ", {
+                variant: "info",
+              });
+              enqueueSnackbar("Use scroll to zoom", {
+                variant: "info",
+              });
+              dispatch({ type: "contact/toggleIsHamOpen", payload: false });
             }}
             style={
               window.location.pathname === "/map"
@@ -62,7 +68,8 @@ function SideBar() {
                 : { color: "black" }
             }
           >
-            <BsMap /> Map
+            <BsMap />
+            Covid Map
           </p>
         </>
       ) : (

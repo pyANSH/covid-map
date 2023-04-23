@@ -4,6 +4,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
 import { FiTrash } from "react-icons/fi";
 import ViewContact from "../../Components/Popup/VIewContact";
+import { useSnackbar } from "notistack";
 // Objective Page Contacts:
 // The app should have a form for adding new contacts
 // The app should display a list of all added contacts
@@ -13,6 +14,8 @@ import ViewContact from "../../Components/Popup/VIewContact";
 function Contact() {
   const dispatch: any = useDispatch();
   const { contactArray } = useSelector((state: any) => state.contact);
+  const { enqueueSnackbar } = useSnackbar();
+
   return (
     <div className=" h-full w-full relative ">
       <div className="flex flex-col justify-start items-center max-h-screen">
@@ -74,6 +77,9 @@ function Contact() {
                     dispatch({
                       type: "contact/deleteContact",
                       payload: contact.id,
+                    });
+                    enqueueSnackbar("Contact Deleted", {
+                      variant: "success",
                     });
                   }}
                 >

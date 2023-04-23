@@ -5,9 +5,7 @@ import { useEffect } from "react";
 
 function Layout({ children }: { children: JSX.Element }) {
   const { isHamOpen } = useSelector((state: any) => state.contact);
-  useEffect(() => {
-    console.log("isHamOpen", isHamOpen);
-  }, [isHamOpen]);
+  useEffect(() => {}, [isHamOpen]);
   return (
     <div
       className="grid w-11/12 mx-auto  h-screen gap-4
@@ -21,7 +19,7 @@ function Layout({ children }: { children: JSX.Element }) {
         <SideBar />
         <div></div>
         <div className="h-full w-full overflow-y-auto">
-          <div className="m-h-full m-w-full mx-auto">{children}</div>
+          <div className="h-full w-full mx-auto">{children}</div>
         </div>
       </div>
     </div>

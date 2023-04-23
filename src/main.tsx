@@ -9,7 +9,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
-    <SnackbarProvider maxSnack={3}>
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      preventDuplicate
+    >
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
