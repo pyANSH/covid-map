@@ -1,4 +1,3 @@
-import React from "react";
 import AddContactPopup from "../../Components/Popup/AddContactPopup";
 import { useSelector, useDispatch } from "react-redux";
 import { BsPlusLg } from "react-icons/bs";
