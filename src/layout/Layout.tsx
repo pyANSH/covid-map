@@ -12,7 +12,7 @@ function Layout({ children }: { children: JSX.Element }) {
     <div
       className="grid w-11/12 mx-auto  h-screen gap-4
         
-        md:grid-cols-2 md:grid-rows-1 md:gap-0 md:w-full md:h-full
+    
       "
       style={{ gridTemplateRows: `10% 85%` }}
     >

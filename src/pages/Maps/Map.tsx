@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useQuery } from "react-query";
 import "./react-leaflet.d.ts";
 import "../../App.css";
+import "leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
 import fetchCountries from "../../Store/API/fetchCountries";
 import marker from "../../assets/marker_img.png";

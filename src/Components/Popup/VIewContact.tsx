@@ -7,7 +7,7 @@ function VIewContact() {
   );
   return (
     <div
-      className={`fixed z-10 inset-0 overflow-y-auto 
+      className={`fixed inset-0 overflow-y-auto x
         ${isViewOpen ? "ease-out duration-300 opacity-100" : "hidden"}
        `}
       onKeyUpCapture={(e) => {
