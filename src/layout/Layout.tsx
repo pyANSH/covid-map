@@ -20,10 +20,8 @@ function Layout({ children }: { children: JSX.Element }) {
       <div className={`grid gap-4 relative   layout_container`}>
         <SideBar />
         <div></div>
-        <div className="h-full w-full">
-          <div className="h-full w-full mx-auto overflow-y-auto">
-            {children}
-          </div>
+        <div className="h-full w-full overflow-y-auto">
+          <div className="m-h-full m-w-full mx-auto">{children}</div>
         </div>
       </div>
     </div>
