@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { RiContactsLine } from "react-icons/ri";
 import { BsMap } from "react-icons/bs";

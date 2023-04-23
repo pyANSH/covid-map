@@ -1,5 +1,3 @@
-import React from "react";
-
 function Header() {
   return (
     <header className="flex  justify-between align-middle h-full">
