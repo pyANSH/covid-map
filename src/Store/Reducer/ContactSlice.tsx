@@ -6,6 +6,8 @@ const initialState: {
   isOpen: false;
   count: number;
   isEdit: boolean;
+  isViewOpen: boolean;
+  isHamOpen: boolean;
 } = {
   contactArray: [],
   isOpen: false,
@@ -18,6 +20,8 @@ const initialState: {
     phoneNumber: "",
   },
   isEdit: false,
+  isViewOpen: false,
+  isHamOpen: false,
 };
 export const contactSlice = createSlice({
   name: "contact",
@@ -57,6 +61,22 @@ export const contactSlice = createSlice({
     ) => {
       state.isOpen = action.payload;
     },
+    toggleIsViewOpen: (
+      state: { isViewOpen: boolean },
+      action: {
+        payload: boolean;
+      }
+    ) => {
+      state.isViewOpen = action.payload;
+    },
+    toggleIsHamOpen: (
+      state: { isHamOpen: boolean },
+      action: {
+        payload: boolean;
+      }
+    ) => {
+      state.isHamOpen = action.payload;
+    },
   },
 });
 
@@ -66,6 +86,8 @@ export const {
   editContact,
   editCurrentContact,
   togglePopup,
+  toggleIsViewOpen,
+  toggleIsHamOpen,
 } = contactSlice.actions;
 
 export default contactSlice.reducer;

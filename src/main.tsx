@@ -5,12 +5,15 @@ import "./input.css";
 import App from "./App";
 import { store } from "./Store/Store";
 import { SnackbarProvider } from "notistack";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <SnackbarProvider maxSnack={3}>
+  <Provider store={store}>
+    <SnackbarProvider maxSnack={3}>
+      <QueryClientProvider client={queryClient}>
         <App />
-      </SnackbarProvider>
-    </Provider>
-  </React.StrictMode>
+      </QueryClientProvider>
+    </SnackbarProvider>
+  </Provider>
 );

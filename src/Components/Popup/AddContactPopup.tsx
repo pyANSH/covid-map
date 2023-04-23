@@ -38,10 +38,7 @@ function AddContactPopup() {
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3
-                  className="text-lg leading-6 font-medium text-gray-900"
-                  id="modal-headline"
-                >
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
                   Add Contact
                 </h3>
                 <div className="mt-2">
@@ -67,7 +64,6 @@ function AddContactPopup() {
                           }
                           min={4}
                           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                          id="grid-first-name"
                           type="text"
                           placeholder="Jane"
                           required
@@ -93,7 +89,6 @@ function AddContactPopup() {
                             })
                           }
                           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="grid-last-name"
                           type="text"
                           placeholder="Doe"
                         />
@@ -169,6 +164,43 @@ function AddContactPopup() {
                   enqueueSnackbar("Please fill all the fields", {
                     variant: "error",
                   });
+                  return;
+                }
+                function validationEmail(email: string) {
+                  var re = /\S+@\S+\.\S+/;
+                  return re.test(email);
+                }
+                if (!validationEmail(currentContact.email)) {
+                  enqueueSnackbar("Please enter a valid email", {
+                    variant: "error",
+                  });
+                  return;
+                }
+                function validationPhone(phone: string) {
+                  var re = /^\d+$/;
+                  return re.test(phone);
+                }
+                if (!validationPhone(currentContact.phoneNumber)) {
+                  enqueueSnackbar("Please enter a valid phone number", {
+                    variant: "error",
+                  });
+                  return;
+                }
+                function validationName(name: string) {
+                  var re = /^[a-zA-Z]+$/;
+                  return re.test(name);
+                }
+                if (!validationName(currentContact.firstName)) {
+                  enqueueSnackbar("Please enter a valid first name", {
+                    variant: "error",
+                  });
+                  return;
+                }
+                if (!validationName(currentContact.lastName)) {
+                  enqueueSnackbar("Please enter a valid last name", {
+                    variant: "error",
+                  });
+                  return;
                 } else {
                   if (isEdit) {
                     dispatch({
@@ -215,6 +247,16 @@ function AddContactPopup() {
                 dispatch({
                   type: "contact/toggleIsEdit",
                   payload: false,
+                });
+                dispatch({
+                  type: "contact/editCurrentContact",
+                  payload: {
+                    id: count + 1,
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    phoneNumber: "",
+                  },
                 });
               }}
             >

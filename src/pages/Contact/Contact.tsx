@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BsPlusLg } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
 import { FiTrash } from "react-icons/fi";
+import ViewContact from "../../Components/Popup/VIewContact";
 // Objective Page Contacts:
 // The app should have a form for adding new contacts
 // The app should display a list of all added contacts
@@ -19,29 +20,38 @@ function Contact() {
           return (
             <div
               key={contact.id}
-              className="flex justify-between items-center w-11/12 h-18 "
+              className="flex justify-between items-center w-full h-18 "
             >
-              <div className="flex justify-start items-center">
-                <div className="h-12 w-12 rounded-full bg-gray-300 flex justify-center items-center">
+              <div
+                className="flex justify-start items-center"
+                onClick={() => {
+                  dispatch({ type: "contact/toggleIsViewOpen", payload: true });
+                  dispatch({
+                    type: "contact/editCurrentContact",
+                    payload: {
+                      id: contact.id,
+                      firstName: contact.firstName,
+                      lastName: contact.lastName,
+                      email: contact.email,
+                      phoneNumber: contact.phoneNumber,
+                    },
+                  });
+                }}
+              >
+                <div className="h-12 w-12 rounded-full bg-gray-300 flex justify-center items-center truncate">
                   <span className="text-2xl font-bold text-gray-700">
                     {contact.firstName[0]}
                   </span>
                 </div>
                 <div className="flex flex-col justify-center items-start ml-4">
-                  <span className="text-lg font-bold text-gray-700">
+                  <span className="text-lg font-bold text-gray-700 text-fix w-full">
                     {contact.firstName} {contact.lastName}
-                  </span>
-                  <span className="text-sm font-medium text-gray-500">
-                    Email: {contact.email}
-                  </span>
-                  <span className="text-sm font-medium text-gray-500">
-                    Phone Number: {contact.phoneNumber}
                   </span>
                 </div>
               </div>
               <div className="flex justify-end items-center">
                 <button
-                  className="text-blue-500 hover:text-blue-700  font-bold h-10 w-10 rounded-full flex justify-center items-center text-2xl mr-4"
+                  className="text-blue-500 hover:text-blue-700  font-bold h-10 rounded-full flex justify-center items-center text-2xl "
                   onClick={() => {
                     dispatch({ type: "contact/toggleIsEdit", payload: true });
                     dispatch({ type: "contact/togglePopup", payload: true });
@@ -87,6 +97,7 @@ function Contact() {
       </button>
 
       <AddContactPopup />
+      <ViewContact />
     </div>
   );
 }
