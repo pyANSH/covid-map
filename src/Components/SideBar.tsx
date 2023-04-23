@@ -19,23 +19,6 @@ function SideBar() {
       {isHamOpen ? (
         <>
           <p
-            className={`h-10 flex items-center justify-start gap-2 cursor-pointer hover:text-[#3b4bd5] }`}
-            onClick={() => {
-              navigate("/contact");
-              enqueueSnackbar("Use '+' button to Add Contact", {
-                variant: "info",
-              });
-              dispatch({ type: "contact/toggleIsHamOpen", payload: false });
-            }}
-            style={{
-              color:
-                window.location.pathname === "/contact" ? "#3b4bd5" : "black",
-            }}
-          >
-            <RiContactsLine />
-            Contacts
-          </p>
-          <p
             className={`h-10 flex items-center justify-start gap-2 cursor-pointer hover:text-[#3b4bd5]`}
             style={{
               color:
@@ -70,6 +53,23 @@ function SideBar() {
           >
             <BsMap />
             Covid Map
+          </p>
+          <p
+            className={`h-10 flex items-center justify-start gap-2 cursor-pointer hover:text-[#3b4bd5] }`}
+            onClick={() => {
+              navigate("/contact");
+              enqueueSnackbar("Use '+' button to Add Contact", {
+                variant: "info",
+              });
+              dispatch({ type: "contact/toggleIsHamOpen", payload: false });
+            }}
+            style={{
+              color:
+                window.location.pathname === "/contact" ? "#3b4bd5" : "black",
+            }}
+          >
+            <RiContactsLine />
+            Contacts
           </p>
         </>
       ) : (
