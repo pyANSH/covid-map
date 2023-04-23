@@ -2,12 +2,14 @@ import { useSnackbar } from "notistack";
 import { useSelector, useDispatch } from "react-redux";
 
 function AddContactPopup() {
-  //notistack
-  const { enqueueSnackbar } = useSnackbar();
-  const dispatch: any = useDispatch();
+  // this component is used to render the popup for adding a new contact
+  // it is used to render the form for editing a contact
+
+  const { enqueueSnackbar } = useSnackbar(); // this is used to show the snackbar
+  const dispatch: any = useDispatch(); // this is used to dispatch the actions to the redux store
   const { currentContact, isOpen, count, isEdit } = useSelector(
     (state: any) => state.contact
-  );
+  ); // this is used to get the current contact from the redux store and the state of the popup
 
   return (
     <div

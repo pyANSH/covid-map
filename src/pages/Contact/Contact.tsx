@@ -12,8 +12,9 @@ import { useSnackbar } from "notistack";
 // The app should be able to edit and delete contacts
 // Make use of Redux to store the contact data
 function Contact() {
+  // what is the use of this component ? - It is used to render the main content of the contact page. It is used to render the list of contacts and the add contact popup.
   const dispatch: any = useDispatch();
-  const { contactArray } = useSelector((state: any) => state.contact);
+  const { contactArray } = useSelector((state: any) => state.contact); // this is used to get the contactArray from the redux store
   const { enqueueSnackbar } = useSnackbar();
 
   return (
@@ -38,7 +39,7 @@ function Contact() {
                       email: contact.email,
                       phoneNumber: contact.phoneNumber,
                     },
-                  });
+                  }); // this is used to edit the current contact in the redux store
                 }}
               >
                 <div className="h-12 w-12 rounded-full bg-gray-300 flex justify-center items-center truncate">
@@ -61,7 +62,7 @@ function Contact() {
                     dispatch({
                       type: "contact/editCurrentContact",
                       payload: contact,
-                    });
+                    }); // this is used to edit the current contact in the redux store
                   }}
                 >
                   {/* 
@@ -80,7 +81,7 @@ function Contact() {
                     });
                     enqueueSnackbar("Contact Deleted", {
                       variant: "success",
-                    });
+                    }); // this is used to delete the contact from the redux store
                   }}
                 >
                   <span>

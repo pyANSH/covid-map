@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 
 function VIewContact() {
+  // what is the use of this component ? - It is used to render the popup which is used to view the contact details of the contact.
   const dispatch = useDispatch();
   const { isViewOpen, currentContact } = useSelector(
     (state: any) => state.contact
-  );
+  ); // this is used to get the state of the popup from the redux store
   return (
     <div
       className={`fixed inset-0 overflow-y-auto x
@@ -12,7 +13,7 @@ function VIewContact() {
        `}
       onKeyUpCapture={(e) => {
         if (e.key === "Escape") {
-          dispatch({ type: "contact/togglePopup", payload: false });
+          dispatch({ type: "contact/togglePopup", payload: false }); // this is used to toggle the popup in the redux store
         }
       }}
     >
@@ -86,7 +87,7 @@ function VIewContact() {
                     email: "",
                     phoneNumber: "",
                   },
-                });
+                }); // this is used to toggle the popup in the redux store
               }}
               className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
             >

@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { RiContactsLine } from "react-icons/ri";
 import { BsMap } from "react-icons/bs";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
 function SideBar() {
+  // what is the use of this component ? - It is used to render the sidebar of the app. It is also used to render the title of the page depending on the route.
   const { isHamOpen } = useSelector((state: any) => state.contact);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar(); // this is used to show the snackbar notifications
   return (
     <div
       className={`flex flex-col text-xl h-full  justify-start gap-4 absolute left-0 z  ${

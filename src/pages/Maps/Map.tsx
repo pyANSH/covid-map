@@ -6,10 +6,9 @@ import "leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
 import fetchCountries from "../../Store/API/fetchCountries";
 import marker from "../../assets/marker_img.png";
-// World wide data of cases: https://disease.sh/v3/covid-19/all
+
 // Country Specific data of cases: https://disease.sh/v3/covid-19/countries
-// Graph data for cases with date:
-// https://disease.sh/v3/covid-19/historical/all?lastdays=all
+
 interface MapContainer {
   children: any[];
   center?: number[];
@@ -29,6 +28,9 @@ function Map() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         noWrap={true}
       />
+      {/* 
+        use this url to render the map: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+      */}
 
       {data &&
         data?.map((posi: any, index: number) => (
@@ -43,7 +45,8 @@ function Map() {
               <p>Recovered: {posi.recovered}</p>
               <p>Deaths: {posi.deaths}</p>
             </Popup>
-          </Marker>
+            {/* // this is used to render the popup on the marker */}
+          </Marker> // this is used to render the markers on the map
         ))}
     </MapContainer>
   );

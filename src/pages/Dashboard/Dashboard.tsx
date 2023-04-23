@@ -10,7 +10,7 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
+} from "chart.js"; // this is used to render the charts
 import WorldwideCases from "../../Store/API/WorldwideCases";
 ChartJS.register(
   CategoryScale,
@@ -20,11 +20,13 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+); // this is used to register the chartjs plugins
 function Dashboard() {
-  const { data } = useQuery("cases", fetchCases);
-  const { data: dataAll } = useQuery("casesAll", WorldwideCases);
-
+  // World wide data of cases: https://disease.sh/v3/covid-19/all
+  // Graph data for cases with date:
+  // https://disease.sh/v3/covid-19/historical/all?lastdays=all
+  const { data } = useQuery("cases", fetchCases); // this is used to fetch the data from the api
+  const { data: dataAll } = useQuery("casesAll", WorldwideCases); // this is used to fetch the data from the api
   const chartData_cases = {
     labels: Object.keys(data?.["cases"] || {}),
 
@@ -42,7 +44,7 @@ function Dashboard() {
         borderWidth: 1,
       },
     ],
-  };
+  }; // this is used to render the chart data
   const chartData_deaths = {
     labels: Object.keys(data?.["cases"] || {}),
 
@@ -130,7 +132,7 @@ function Dashboard() {
                 display: false,
               },
             },
-            maintainAspectRatio: false,
+            maintainAspectRatio: false, // to maintain the aspect ratio of the chart
           }}
         />
       </div>
