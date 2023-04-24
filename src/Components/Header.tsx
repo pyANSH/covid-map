@@ -16,7 +16,7 @@ function Header() {
             dispatch({ type: "contact/toggleIsHamOpen", payload: !isHamOpen });
           }}
         />
-        Taiyo
+        Covid map
       </h1>
 
       <div className="absolute w-full text-center text-xl underline">
