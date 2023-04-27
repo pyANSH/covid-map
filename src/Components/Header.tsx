@@ -27,7 +27,7 @@ function Header() {
         ) : window.location.pathname === "/map" ? (
           <h1>Covid Map</h1>
         ) : (
-          404
+          ""
         )}
       </div>
       <div></div>
